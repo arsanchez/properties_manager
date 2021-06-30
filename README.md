@@ -12,7 +12,7 @@
 
 5. Create a new database in your local server and run the script located in the 'db_scripts' folder
 
-   1.  The default database name will be 'property_manager' you can change this is needed 
+   1.  The default database name will be 'property_manager' you can change this if needed 
 
 6. Rename the '.env.example' file to '.env' and provide  your database connection details 
 
@@ -27,11 +27,11 @@
     `DB_USERNAME=[your_username]`  
     
     `DB_PASSWORD=[your_pass]`  
-    
+
 
 **Running the application**
 
-1. 'cd' into the application forlder and run the command `php artisan:serve`
+1. 'cd' into the application forlder and run the command `php artisan serve`
 
 **Syncing the properties from the api**
 
