@@ -104,7 +104,7 @@ class PropertyController extends Controller
                     ->skip($offset)->take($lines_per_page)
                     ->whereNull('properties.deleted_at');
 
-        // Applyinh the filters
+        // Applying the filters
         if ($request->name != '') {
             $query->where('town', 'LIKE','%'.$request->name.'%');
         }
