@@ -17,3 +17,5 @@ use App\Http\Controllers\PropertyController;
 Route::get('/', [PropertyController::class, 'index']);
  
 Route::get('/search', [PropertyController::class, 'getProperties']);
+
+Route::get('/delete', [PropertyController::class, 'delete']);

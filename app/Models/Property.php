@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Property extends Model 
 {
     protected $table = 'properties';
+    
+    protected $hidden = ['uuid'];
 
-    public function bulk_insert() {
-
-    }
-
+    use SoftDeletes;
 }
