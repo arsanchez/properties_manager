@@ -14,7 +14,7 @@
         </div>
         <div class="col-3">
             <label class="form-label">Type</label>
-            <select class="custom-select" aria-label="Default select example"  v-model="type_selected">
+            <select class="custom-select"  v-model="type_selected">
                 <option selected value=''>Select a property type</option>
                 <option v-for="option in types" v-bind:value="option.id">
                     {{ option.title }}
@@ -37,6 +37,7 @@
         </div>
         <div class="col-6 bottom-row">
             <button v-on:click="loadProperties()" class="btn btn-primary">Search</button>
+            <button v-on:click="addProperty()" class="btn btn-success">Add property</button>
         </div>
 
         <div class="col-12 bottom-row scrollable">
@@ -71,6 +72,7 @@
                         <td>{{ listing.num_bathrooms }}</td>
                         <td>{{ listing.price | formatNumber}}</td>
                         <td><button type="button" v-on:click="deleteProperty(listing)" class="btn btn-danger btn-sm">Delete property</button></td>
+                        <td><button type="button" v-on:click="editProperty(listing)" class="btn btn-info btn-sm">Edit property</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -138,6 +140,12 @@ export default {
                 }
 
             });
+        },
+        editProperty(listing) {
+            window.location.href = '/add-edit?id=' + listing.id;
+        },
+        addProperty() {
+            window.location.href = '/add-edit?id=0';
         }
     }
 }

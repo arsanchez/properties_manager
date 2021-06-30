@@ -19,3 +19,8 @@ Route::get('/', [PropertyController::class, 'index']);
 Route::get('/search', [PropertyController::class, 'getProperties']);
 
 Route::get('/delete', [PropertyController::class, 'delete']);
+
+Route::get('/add-edit', [PropertyController::class, 'addEdit']);
+
+Route::post('/save/{id}', [PropertyController::class, 'save']);
+
