@@ -16,12 +16,12 @@
 
 6. Rename the '.env.example' file to '.env' and provide  your database connection details 
 
-   `DB_CONNECTION=mysql 
-    DB_HOST=[your_host] 
-    DB_PORT=3306 
-    DB_DATABASE=[your_db] 
-    DB_USERNAME=[your_username] 
-    DB_PASSWORD=[your_pass]`
+    `DB_CONNECTION=mysql`
+    `DB_HOST=[your_host]`
+    `DB_PORT=3306`
+    `DB_DATABASE=[your_db]`
+    `DB_USERNAME=[your_username]`
+    `DB_PASSWORD=[your_pass]`
 
 **Running the application**
 
