@@ -9,7 +9,7 @@
  
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlTT2BFAPkwyQH9_DVTQKVw6UIkximMEE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.test_url')}}"></script>
  
 </head>
 <body>
