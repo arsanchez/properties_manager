@@ -31,6 +31,22 @@ class PropertyController extends Controller
 
     public function save($id, Request $request) 
     {
+        // Validating the data 
+        $this->validate($request, [
+            'county' => ['required'],
+            'country' => ['required'],
+            'town' => ['required'],
+            'description' => ['required'],
+            'address' => ['required'],
+            'num_bedrooms' => ['required'],
+            'num_bathrooms' => ['required'],
+            'price' => ['required'],
+            'listing_type' => ['required'],
+            'lat' => ['required'],
+            'long' => ['required'],
+        ]);
+
+
         if ($id > 0) {
             $result = Property::find($request->id);
            
@@ -48,27 +64,26 @@ class PropertyController extends Controller
         $result->price = $request->price;
         $result->property_type_id = $request->property_type_id;
         $result->type = $request->listing_type;
+        $result->latitude = $request->lat;
+        $result->longitude = $request->long;
 
         // Checking for the image
-        $this->validate($request, [
-            'file' => 'required',
-            'file.*' => 'mimes:jpeg,jpg,gif,png'
-        ]);
-  
-        $image = $request->file('file');
-        $input['imagename'] = time().'.'.$image->extension();
-     
-        $destinationPath = public_path('/thumbnail');
-        $img = ImageResize::make($image->path());
-        $img->resize(100, 100, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$input['imagename']);
-        $result->image_thumbnail = $input['imagename'];
-   
-        $destinationPath = public_path('/image');
-        $image->move($destinationPath, $input['imagename']);
-        $result->image_full = $input['imagename'];
-
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $input['imagename'] = time().'.'.$image->extension();
+         
+            $destinationPath = public_path('/thumbnail');
+            $img = ImageResize::make($image->path());
+            $img->resize(100, 100, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$input['imagename']);
+            $result->image_thumbnail = $input['imagename'];
+       
+            $destinationPath = public_path('/image');
+            $image->move($destinationPath, $input['imagename']);
+            $result->image_full = $input['imagename'];
+        }
+       
         return $result->save();
     }
 

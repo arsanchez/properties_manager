@@ -1981,7 +1981,9 @@ __webpack_require__.r(__webpack_exports__);
 
         var formData = new FormData(this.$refs.propertyForm);
         formData.append('file', this.file);
-        formData.append('listing_type', this.property.type); //  Posting the data 
+        formData.append('listing_type', this.property.type);
+        formData.append('lat', this.property.latitude);
+        formData.append('long', this.property.longitude); //  Posting the data 
 
         var id = this.property.id !== undefined ? this.property.id : 0;
         axios.post('/save/' + id, formData, {
@@ -2046,7 +2048,10 @@ __webpack_require__.r(__webpack_exports__);
 
       return false;
     },
-    locationUpdated: function locationUpdated(latlng) {}
+    locationUpdated: function locationUpdated(latlng) {
+      this.property.latitude = latlng.lat;
+      this.property.longitude = latlng.lng;
+    }
   }
 });
 

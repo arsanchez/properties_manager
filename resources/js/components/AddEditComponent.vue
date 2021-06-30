@@ -137,6 +137,8 @@ import mapLocationSelector from 'vue-google-maps-location-selector';
                     let formData = new FormData(this.$refs.propertyForm);
                     formData.append('file', this.file);
                     formData.append('listing_type', this.property.type);
+                    formData.append('lat', this.property.latitude);
+                    formData.append('long', this.property.longitude);
 
                     //  Posting the data 
                     let id = (this.property.id !== undefined) ? this.property.id : 0;
@@ -208,7 +210,8 @@ import mapLocationSelector from 'vue-google-maps-location-selector';
                 return false;
             },
             locationUpdated: function (latlng) {
-
+                this.property.latitude = latlng.lat;
+                this.property.longitude = latlng.lng;
             }
         }
     }
